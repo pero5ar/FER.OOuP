@@ -16,20 +16,22 @@ struct Animal
 
 // parrots and tigers defined in respective dynamic libraries
 
-void animalPrintGreeting(struct Animal* obj) {
+void animalPrintGreeting(struct Animal* obj)
+{
     printf("%s pozdravlja: %s \n", obj->vtable[0](obj), obj->vtable[1]());
     return;
 }
 
-void animalPrintMenu(struct Animal* obj) {
+void animalPrintMenu(struct Animal* obj)
+{
     printf("%s voli %s \n", obj->vtable[0](obj), obj->vtable[2]());
     return;
 }
 
 int main(void)
 {
-    struct Animal *p1 = (struct Animal *)myfactory("parrot", "Modrobradi");
-    struct Animal *p2 = (struct Animal *)myfactory("tiger", "Strasko");
+    struct Animal *p1 = (struct Animal*) myfactory("parrot", "Modrobradi");
+    struct Animal *p2 = (struct Animal*) myfactory("tiger", "Strasko");
     if (!p1 || !p2) {
         printf("Creation of plug-in objects failed.\n");
         exit(1);
